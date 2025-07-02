@@ -24,8 +24,15 @@ public class Student {
 
     }
     public void enrollCourses(String course) {
-        courses.add(course);
-        System.out.println("Student is enrolled to the course successfully.");
+        if(validateCoursename(course)) {
+
+            if (!courses.contains(course)) {
+                courses.add(course);
+                System.out.println("Student is enrolled to the course "+course+" successfully.");
+            } else {
+                System.err.println("Student is already enrolled to the course " + course);
+            }
+        }
     }
 
     @Override
@@ -78,5 +85,26 @@ public class Student {
             System.err.println("Invalid Id");
             return  false;
         }
+    }
+
+    public boolean validateCoursename(String courseName) {
+        if(courseName.equalsIgnoreCase("Java") || courseName.equalsIgnoreCase("Python") || courseName.equalsIgnoreCase("DSA") || courseName.equalsIgnoreCase("Postman")) {
+            return  true;
+        } else {
+            System.err.println(courseName+" course is not from the list. Please select Java, Python, DSA or Postman");
+            return false;
+        }
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getStudentId() {
+        return studentId;
     }
 }
