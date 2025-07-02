@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("***************** Student Management System *************");
         System.out.println("****** Welcome *******");
-        Student s1 = new Student("Balanand112344",28,"S1");
+        Student s1 = new Student("Balanand",28,"S-1");
 
         s1.enrollCourses("Java");
         s1.enrollCourses("selenium");

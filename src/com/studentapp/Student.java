@@ -15,7 +15,7 @@ public class Student {
     //Constructor
 
     public Student(String name, int age, String studentId) {
-        if(validateAge(age) && validateName(name)) {
+        if(validateAge(age) && validateName(name) && validateId(studentId)) {
             this.name = name;
             this.age = age;
             this.studentId = studentId;
@@ -63,8 +63,20 @@ public class Student {
       if(mtch.matches()){
           return true;
       } else{
-          System.err.println("Imvalid Name !!!!! please enter alphabets on");
+          System.err.println("Invalid Name !!!!! please enter alphabets on");
           return  false;
       }
+    }
+
+    public boolean validateId(String studentId){
+        String studentIdRegEx = "S-\\d+$";
+        Pattern studentIdPattern = Pattern.compile(studentIdRegEx);
+        Matcher studentIdMatch = studentIdPattern.matcher(studentId);
+        if(studentIdMatch.matches()) {
+            return true;
+        } else {
+            System.err.println("Invalid Id");
+            return  false;
+        }
     }
 }
