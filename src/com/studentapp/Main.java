@@ -1,6 +1,8 @@
 package com.studentapp;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -28,16 +30,27 @@ public class Main {
         s2.enrollCourses("DSA");
         s2.enrollCourses("Python");
 
+        Student s3;
+        s3 = new Student("Mukund", 19, "S-3");
+
+
+        s3.enrollCourses("Java");
+        s3.enrollCourses("DSA");
+        s3.enrollCourses("Python");
+        s3.enrollCourses("Javascript");
+
         // System.out.println(s1);
         // s1.printStudentInfo();
         // s2.printStudentInfo();
 
         studentList.add(s1);
         studentList.add(s2);
+        studentList.add(s3);
+        sortByName();
         //  System.out.println(studentList.getFirst());
 
 
-        Student result = getStudentbyId("S-2");
+        Student result = getStudentbyId("S-3");
         System.out.println("Result " + result);
 
     }
@@ -51,5 +64,19 @@ public class Main {
             System.err.println("Student with ID " + studentId + " not found!!");
         }
         return result;
+    }
+    private static  void sortByName() {
+        Comparator<Student> studentNameComparator = (o1,o2) -> o1.getName().compareTo(o2.getName());
+                /*new Comparator<Student>() {
+            @Override
+            public int compare(Student o1, Student o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        };
+
+        */
+
+        Collections.sort(studentList,studentNameComparator);
+        System.out.println(studentList);
     }
 }
